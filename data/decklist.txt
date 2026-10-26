@@ -1,0 +1,120 @@
+COMMANDER:
+1 Dack Fayden, Helping Hand
+
+MAINBOARD:
+1 Abeyance
+1 Ancient Den
+1 Ancient Tomb
+1 Arcane Signet
+1 Basalt Monolith
+1 Blind Obedience
+1 Boonweaver Giant
+1 Brainstone
+1 Calamity's Wake
+1 Candelabra of Tawnos
+1 Captured by the Consulate
+1 Cavern of Souls
+1 Chalice of the Void
+1 Charitable Levy
+1 Chrome Mox
+1 City of Brass
+1 City of Traitors
+1 Coalition Flag
+1 Coalition Relic
+1 Command Beacon
+1 Component Pouch
+1 Crystal Vein
+1 Cursed Totem
+1 Damping Sphere
+1 Darksteel Mutation
+1 Deafening Silence
+1 Defense Grid
+1 Disruptor Flute
+1 Eiganjo, Seat of the Empire
+1 Eldrazi Conscription
+1 Enlightened Tutor
+1 Everflowing Chalice
+1 Expedition Map
+1 Fellwar Stone
+1 Floating Shield
+1 Forbidden Orchard
+1 Gemstone Caverns
+1 Gemstone Mine
+1 Gleaming Splendor
+1 Great Hall of the Citadel
+1 Grim Monolith
+1 Idolized
+1 Implements of Sacrifice
+1 Jeweled Amulet
+1 Lion's Eye Diamond
+1 Lotus Petal
+1 Mana Confluence
+1 Mana Tithe
+1 Mana Vault
+1 Manifold Key
+1 March of Otherworldly Light
+1 Mishra's Workshop
+1 Monologue Tax
+1 Moonsilver Key
+1 Mox Diamond
+1 Mox Opal
+1 Multiversal Passage
+1 Orim's Chant
+1 Paladin Class
+1 Path to Exile
+1 Pentad Prism
+7 Plains
+1 Portable Hole
+1 Preston, the Vanisher
+1 Prismatic Lens
+1 Razorgrass Ambush
+1 Remote Farm
+1 Reprieve
+1 Roaming Throne
+1 Ruins of Trokair
+1 Seam Rip
+1 Serum Powder
+1 Sheltered by Ghosts
+1 Silence
+1 Smothering Tithe
+1 Snow-Covered Plains
+1 Sol Ring
+1 Soul Partition
+1 Starting Town
+1 Static Prison
+1 Super State
+1 Swords to Plowshares
+1 Talon Gates of Madara
+1 Tarnished Citadel
+1 Tezzeret, Cruel Captain
+1 The Mycosynth Gardens
+1 Thorn of Amethyst
+1 Thran Portal
+1 Tooth of Ramos
+1 Trinisphere
+1 Urza's Saga
+1 Vexing Bauble
+1 Voltaic Key
+
+SIDEBOARD:
+1 Amulet of Vigor
+1 Bovine Intervention
+1 Burst of Energy
+1 Conjurer's Bauble
+1 Erode
+1 Exotic Orchard
+1 Fomori Vault
+1 Glimmervoid
+1 Helm of Awakening
+1 Lotus Blossom
+1 Lotus Field
+1 Pearl Medallion
+1 Petrified Hamlet
+1 Planar Collapse
+1 Spire of Industry
+1 The Tabernacle at Pendrell Vale
+1 Thran Dynamo
+1 Twinblade Blessing
+1 Unexpectedly Absent
+1 Untaidake, the Cloud Keeper
+1 Worn Powerstone
