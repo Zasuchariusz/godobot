@@ -19,7 +19,7 @@ Full spec: [docs/requirements.md](docs/requirements.md). Read it before making d
 - Implement only rules the deck needs. No full MTG rules engine.
 
 ## Defaults (change only if the user asks)
-- Play/draw random per game. 3 opponents. Free first mulligan + London mulligan.
+- Seat (1–4) is a user input per game (players roll seats themselves). 3 opponents. Free first mulligan + London mulligan.
 - Casting policy: Smart (cast unprotected only if waiting costs a full turn).
 - Stax/removal pieces not cast in goldfish by default.
 - Commander tax +2 per previous cast from the command zone. Command Beacon avoids it.

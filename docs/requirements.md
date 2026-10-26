@@ -82,7 +82,7 @@ The only interaction is the user telling the app what opponents did:
 - 99-card library + Dack in command zone. Opening hand 7.
 - **Free first mulligan, then London mulligan** (draw 7, bottom N).
 - **Serum Powder**: may exile hand and redraw that many, in addition to mulligans.
-- **Play or draw**: random per game by default (setting to force either). Starting player skips first draw.
+- **Seat**: 1–4, entered by the user per game (players roll seats themselves). Multiplayer, so no player skips the first draw.
 - **Gemstone Caverns**: if in opening hand and not starting player, may start on battlefield with a luck counter
   (exile a card from hand).
 - Number of opponents: 3 (standard cEDH pod).
