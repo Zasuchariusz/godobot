@@ -6,6 +6,8 @@ spells countered or permanents removed, and the planner replans.
 
 Full spec: [docs/requirements.md](docs/requirements.md). Read it before making design decisions.
 
+Progress checklist: [docs/progress.md](docs/progress.md). Read it at session start and tick items as they are finished.
+
 ## Key facts
 - Stack: React + TypeScript + Vite. Mobile later via Capacitor (keep UI touch-friendly).
 - `src/engine/` is pure TS with no React imports. It's a deterministic reducer `(state, action) => newState` with seeded RNG.
