@@ -13,7 +13,7 @@ describe('initGame + drawCards', () => {
     expect(initial.library.map((c) => c.defId)).not.toEqual(MAINBOARD_IDS)
     expect(testGame()).toEqual(initial) // same seed, same shuffle
 
-    const drawn = drawCards(initial, 7)
+    const drawn = drawCards(initial, { count: 7 })
     expect(drawn.hand).toHaveLength(7)
     expect(drawn.library).toHaveLength(32)
     expect(drawn.hand).toEqual(initial.library.slice(0, 7))

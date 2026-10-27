@@ -6,8 +6,8 @@ describe('drawCards', () => {
   it('appends drawn cards to a hand that already has cards', () => {
     const initial = testGame()
 
-    const afterFirst = drawCards(initial, 3)
-    const afterSecond = drawCards(afterFirst, 2)
+    const afterFirst = drawCards(initial, { count: 3 })
+    const afterSecond = drawCards(afterFirst, { count: 2 })
 
     expect(afterSecond.hand).toHaveLength(5)
     expect(afterSecond.hand.slice(0, 3)).toEqual(afterFirst.hand)

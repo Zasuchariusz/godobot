@@ -9,7 +9,7 @@ Checklist of what is done and what is next. Phases follow the build plan in
 - [x] Seeded RNG + shuffle (`rng.ts`)
 - [x] `initGame`: commander in command zone, shuffled library (+ tests)
 - [x] `drawCards` (+ tests)
-- [ ] Reducer skeleton: `(state, action) => newState`, action types
+- [x] Reducer skeleton: `(state, action) => newState`, action types
 - [ ] Opening hand + mulligans (free first, then London)
 - [ ] Serum Powder redraw
 - [ ] Turn structure: untap, upkeep, draw (seat 1 included, no skipped draw), main
