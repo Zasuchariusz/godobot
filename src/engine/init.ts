@@ -1,6 +1,6 @@
 import type { CardInstance } from './card'
 import { shuffle } from './rng'
-import type { GameState } from './state'
+import { emptyPool, type GameState } from './state'
 
 export interface InitOptions {
   /** Card def id of the commander, e.g. "dack-fayden-helping-hand". */
@@ -35,6 +35,7 @@ export function initGame({ commanderId, mainboardIds, seat, seed }: InitOptions)
     landDropUsed: false,
     commanderCasts: 0,
     life: 40,
+    manaPool: emptyPool(),
     rngState,
   }
 }

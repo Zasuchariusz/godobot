@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { drawCards } from '../../src/engine/draw'
+import { drawCards } from '../../src/engine/actions'
 import { testGame } from '../helpers'
 
 describe('drawCards', () => {

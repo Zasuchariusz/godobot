@@ -1,6 +1,11 @@
-import type { CardInstance } from './card'
+import type { CardInstance, ManaSymbol } from './card'
 
 export type Zone = 'library' | 'hand' | 'battlefield' | 'graveyard' | 'exile' | 'command'
+
+/** Count of floating mana per symbol. */
+export type ManaPool = Record<ManaSymbol, number>
+
+export const emptyPool = (): ManaPool => ({ W: 0, U: 0, B: 0, R: 0, G: 0, C: 0 })
 
 export interface GameState {
   /** Index 0 is the top of the library. */
@@ -19,6 +24,8 @@ export interface GameState {
   /** Times Dack was cast from the command zone; commander tax is 2 * this. */
   commanderCasts: number
   life: number
+  /** Floating mana; empties at the end of each phase. */
+  manaPool: ManaPool
 
   /** Current state of the seeded RNG, so the reducer stays deterministic. */
   rngState: number
