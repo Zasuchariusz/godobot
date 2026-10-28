@@ -1,75 +1,31 @@
-# React + TypeScript + Vite
+# Godobot 🤖🐟
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Have you ever found yourself ditched by a friend and ended up in a CEDH 3-pod? 😭
 
-Currently, two official plugins are available:
+Do you have a smartass in your pod who claims that it's easy to beat Dack Fayden with "just keep removal"? 🤡
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Godobot solves both of these problems. Just put it on the empty seat and watch it speedrun its way to an uninteractable win line. 🏎️💨
 
-## React Compiler
+Godobot is just playing Dack Fayden to the 95% of the top pilots capacity. 😎
+Work is in progress but the basic specs is:
+- goldfishes the preprogrammed Dack Fayden list
+- lets you counter its spells and remove its board (it's futile 💀)
+- offline browser app 🌐
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Status
 
-## Expanding the ESLint configuration
+Early work in progress. The game engine is a pure TypeScript reducer
+`(state, action) => newState` with a seeded RNG, so games are reproducible and testable.
+The planner and the UI are not built yet.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Development
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+    npm install
+    npm run dev     # start the dev server
+    npm test        # run the engine tests
+    npm run build   # type-check and build
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## More
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+- [docs/requirements.md](docs/requirements.md): full spec
+- [docs/progress.md](docs/progress.md): what is done and what is next
