@@ -44,6 +44,9 @@ src/
 - Engine is a pure reducer: `(state, action) => newState`. Deterministic given a seeded RNG.
 - This gives: unit tests, undo/replay for free, and headless batch simulation.
 - Cards = data (cost, types, produced mana) + small effect functions for the ~25 that need custom logic.
+- Illegal actions (wrong zone, land drop used, tapped permanent, etc.) are currently silent no-ops. They must be
+  logged in some form later (e.g. a rejection entry the UI log and planner can read). Design TBD: a log field on
+  `GameState` or a `{ state, error }` handler result.
 
 ## 4. User interaction (disruption)
 

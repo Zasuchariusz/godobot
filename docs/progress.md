@@ -26,6 +26,7 @@ Checklist of what is done and what is next. Phases follow the build plan in
 - [ ] Commander cast: tax (+2 per cast), countered → command zone, Command Beacon
 - [ ] Life tracking
 - [ ] Unit tests for tricky lines (Workshop + Key + Monolith, Great Hall, Cavern, Damping Sphere)
+- [ ] Log illegal actions (handlers like `playLand` currently silently return the state unchanged)
 
 ## 2. Planner
 - [ ] Single-turn search for casting Dack

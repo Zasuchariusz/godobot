@@ -23,3 +23,9 @@ export function withHand(...defIds: string[]): [GameState, number[]] {
     uids,
   ]
 }
+
+/** Moves the first library card of each def id onto the battlefield, returning the state and their uids. */
+export function withBattlefield(...defIds: string[]): [GameState, number[]] {
+  const [game, uids] = withHand(...defIds)
+  return [{ ...game, hand: [], battlefield: game.hand }, uids]
+}

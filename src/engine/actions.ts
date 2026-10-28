@@ -1,10 +1,13 @@
+import type { Color } from './card'
 import { CARD_DEFS_BY_ID } from './cardDefs'
-import type { GameState } from './state'
+import { addMana, type GameState } from './state'
 
 /** Payload shape for each action type. Add new actions here. */
 export interface ActionPayloads {
   drawCards: { count: number }
   playLand: { uid: number }
+  /** `color` is required for any-color lands and ignored otherwise. */
+  tapLandForMana: { uid: number; color?: Color }
 }
 
 export type ActionType = keyof ActionPayloads
@@ -39,5 +42,20 @@ export function playLand(state: GameState, { uid }: ActionPayloads['playLand']):
     hand: state.hand.filter((c) => c.uid !== uid),
     battlefield: [...state.battlefield, { ...card, tapped: def.entersTapped ?? false }],
     landDropUsed: true,
+  }
+}
+
+/** Taps an untapped land on the battlefield for its first free mana ability; otherwise returns the state unchanged. */
+export function tapLandForMana(state: GameState, { uid, color }: ActionPayloads['tapLandForMana']): GameState {
+  const card = state.battlefield.find((c) => c.uid === uid)
+  const def = card && CARD_DEFS_BY_ID[card.defId]
+  const ability = def?.mana?.[0]
+  if (!card || card.tapped || !def?.types.includes('land') || !ability || ability.cost) return state
+  const produced = ability.anyColor ? (color ? [color] : []) : ability.produces
+  if (produced.length === 0) return state
+  return {
+    ...state,
+    battlefield: state.battlefield.map((c) => (c.uid === uid ? { ...c, tapped: true } : c)),
+    manaPool: addMana(state.manaPool, produced),
   }
 }
