@@ -1,4 +1,4 @@
-import type { Color } from './card'
+import type { CardType, Color } from './card'
 import { CARD_DEFS_BY_ID } from './cardDefs'
 import { addMana, spendMana, type GameState } from './state'
 
@@ -9,6 +9,7 @@ export interface ActionPayloads {
   /** `color` is required for any-color lands and ignored otherwise. */
   tapLandForMana: { uid: number; color?: Color }
   castSpell: { uid: number }
+  resolveStack: Record<string, never>
 }
 
 export type ActionType = keyof ActionPayloads
@@ -69,4 +70,21 @@ export function castSpell(state: GameState, { uid }: ActionPayloads['castSpell']
   const manaPool = spendMana(state.manaPool, def.manaCost)
   if (!manaPool) return state
   return { ...state, hand: state.hand.filter((c) => c.uid !== uid), stack: card, manaPool }
+}
+
+const PERMANENT_TYPES: CardType[] = ['artifact', 'creature', 'enchantment', 'planeswalker']
+
+/** Empties the stack: permanents enter the battlefield, anything else goes to the graveyard. */
+export function resolveStack(state: GameState): GameState {
+  const card = state.stack
+  if (!card) return state
+  const def = CARD_DEFS_BY_ID[card.defId]
+  if (!def?.types.some((t) => PERMANENT_TYPES.includes(t))) {
+    return { ...state, stack: null, graveyard: [...state.graveyard, card] }
+  }
+  return {
+    ...state,
+    stack: null,
+    battlefield: [...state.battlefield, { ...card, tapped: def.entersTapped ?? false }],
+  }
 }
