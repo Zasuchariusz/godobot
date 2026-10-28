@@ -30,6 +30,7 @@ export function initGame({ commanderId, mainboardIds, seat, seed }: InitOptions)
     graveyard: [],
     exile: [],
     command: [newCard(0, commanderId)],
+    stack: null,
     turn: 0,
     seat,
     landDropUsed: false,

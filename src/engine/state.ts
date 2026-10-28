@@ -1,6 +1,6 @@
-import type { CardInstance, ManaSymbol } from './card'
+import type { CardInstance, Color, ManaCost, ManaSymbol } from './card'
 
-export type Zone = 'library' | 'hand' | 'battlefield' | 'graveyard' | 'exile' | 'command'
+export type Zone = 'library' | 'hand' | 'battlefield' | 'graveyard' | 'exile' | 'command' | 'stack'
 
 /** Count of floating mana per symbol. */
 export type ManaPool = Record<ManaSymbol, number>
@@ -14,6 +14,25 @@ export function addMana(pool: ManaPool, symbols: readonly ManaSymbol[]): ManaPoo
   return next
 }
 
+/** Order generic mana is paid in after colourless: W last, since Dack needs WW. */
+const GENERIC_PAY_ORDER: ManaSymbol[] = ['C', 'U', 'B', 'R', 'G', 'W']
+
+/** Returns the pool after paying `cost`, or null if it can't be paid. */
+export function spendMana(pool: ManaPool, cost: ManaCost): ManaPool | null {
+  const next = { ...pool }
+  for (const [color, n] of Object.entries(cost.colored) as [Color, number][]) {
+    if (next[color] < n) return null
+    next[color] -= n
+  }
+  let generic = cost.generic
+  for (const symbol of GENERIC_PAY_ORDER) {
+    const paid = Math.min(generic, next[symbol])
+    next[symbol] -= paid
+    generic -= paid
+  }
+  return generic === 0 ? next : null
+}
+
 export interface GameState {
   /** Index 0 is the top of the library. */
   library: CardInstance[]
@@ -23,6 +42,8 @@ export interface GameState {
   exile: CardInstance[]
   /** Dack, while not on the stack or battlefield. */
   command: CardInstance[]
+  /** The one spell awaiting opponent responses; null when the stack is empty. */
+  stack: CardInstance | null
 
   turn: number
   /** Turn-order position, chosen by the user. */

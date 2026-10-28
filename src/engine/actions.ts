@@ -1,6 +1,6 @@
 import type { Color } from './card'
 import { CARD_DEFS_BY_ID } from './cardDefs'
-import { addMana, type GameState } from './state'
+import { addMana, spendMana, type GameState } from './state'
 
 /** Payload shape for each action type. Add new actions here. */
 export interface ActionPayloads {
@@ -8,6 +8,7 @@ export interface ActionPayloads {
   playLand: { uid: number }
   /** `color` is required for any-color lands and ignored otherwise. */
   tapLandForMana: { uid: number; color?: Color }
+  castSpell: { uid: number }
 }
 
 export type ActionType = keyof ActionPayloads
@@ -58,4 +59,14 @@ export function tapLandForMana(state: GameState, { uid, color }: ActionPayloads[
     battlefield: state.battlefield.map((c) => (c.uid === uid ? { ...c, tapped: true } : c)),
     manaPool: addMana(state.manaPool, produced),
   }
+}
+
+/** Pays for a non-land card in hand and puts it on the empty stack; otherwise returns the state unchanged. */
+export function castSpell(state: GameState, { uid }: ActionPayloads['castSpell']): GameState {
+  const card = state.hand.find((c) => c.uid === uid)
+  const def = card && CARD_DEFS_BY_ID[card.defId]
+  if (!card || !def || def.types.includes('land') || state.stack) return state
+  const manaPool = spendMana(state.manaPool, def.manaCost)
+  if (!manaPool) return state
+  return { ...state, hand: state.hand.filter((c) => c.uid !== uid), stack: card, manaPool }
 }

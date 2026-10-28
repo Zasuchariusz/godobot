@@ -12,6 +12,7 @@ describe('initGame + drawCards', () => {
     expect(initial.command.map((c) => c.defId)).toEqual([COMMANDER_ID])
     expect(initial.library.map((c) => c.defId)).not.toEqual(MAINBOARD_IDS)
     expect(testGame()).toEqual(initial) // same seed, same shuffle
+    expect(initial.stack).toBeNull()
     expect(initial.manaPool).toEqual({ W: 0, U: 0, B: 0, R: 0, G: 0, C: 0 })
 
     const drawn = drawCards(initial, { count: 7 })

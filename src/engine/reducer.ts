@@ -1,10 +1,11 @@
-import { drawCards, playLand, tapLandForMana, type Action, type ActionPayloads, type ActionType, type Handlers } from './actions'
+import { drawCards, playLand, tapLandForMana, castSpell, type Action, type ActionPayloads, type ActionType, type Handlers } from './actions'
 import type { GameState } from './state'
 
 const handlers: Handlers = {
   drawCards,
   playLand,
   tapLandForMana,
+  castSpell,
 }
 
 /** Generic in K so TS ties each handler to its own payload type, with no cast. */
